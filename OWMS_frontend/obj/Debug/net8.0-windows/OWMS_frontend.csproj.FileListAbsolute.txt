@@ -1,0 +1,16 @@
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\bin\Debug\net8.0-windows\OWMS_frontend.exe
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\bin\Debug\net8.0-windows\OWMS_frontend.deps.json
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\bin\Debug\net8.0-windows\OWMS_frontend.runtimeconfig.json
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\bin\Debug\net8.0-windows\OWMS_frontend.dll
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\bin\Debug\net8.0-windows\OWMS_frontend.pdb
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.Form1.resources
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.csproj.GenerateResource.cache
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.AssemblyInfoInputs.cache
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.AssemblyInfo.cs
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.csproj.CoreCompileInputs.cache
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.dll
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\refint\OWMS_frontend.dll
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.pdb
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\OWMS_frontend.genruntimeconfig.cache
+C:\Users\SUP-041\source\repos\OWMS_frontend\OWMS_frontend\obj\Debug\net8.0-windows\ref\OWMS_frontend.dll
