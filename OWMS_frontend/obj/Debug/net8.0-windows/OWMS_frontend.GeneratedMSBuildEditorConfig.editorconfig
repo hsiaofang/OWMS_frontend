@@ -14,7 +14,11 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OWMS_frontend
-build_property.ProjectDir = C:\Users\hsiao\source\repos\hsiaofang\OWMS_fronted\OWMS_frontend\
+<<<<<<< HEAD
+build_property.ProjectDir = C:\Users\SUP-041\Desktop\OWMS_frontend\OWMS_frontend\
+=======
+build_property.ProjectDir = C:\Users\hsiao\source\repos\hsiaofang\OWMS_frontend\OWMS_frontend\
+>>>>>>> cb3e52a (gitignore)
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

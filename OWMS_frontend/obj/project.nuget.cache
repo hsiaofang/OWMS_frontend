@@ -1,8 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "ENlKuoBk/qE=",
+<<<<<<< HEAD
+  "dgSpecHash": "QK71SaV4cJM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\hsiao\\source\\repos\\hsiaofang\\OWMS_fronted\\OWMS_frontend\\OWMS_frontend.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\SUP-041\\Desktop\\OWMS_frontend\\OWMS_frontend\\OWMS_frontend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SUP-041\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\SUP-041\\Desktop\\OWMS_frontend\\OWMS_frontend\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
+=======
+  "dgSpecHash": "hCPt8P6xsCg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hsiao\\source\\repos\\hsiaofang\\OWMS_frontend\\OWMS_frontend\\OWMS_frontend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hsiao\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
+>>>>>>> cb3e52a (gitignore)
 }
