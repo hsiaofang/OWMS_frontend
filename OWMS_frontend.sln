@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> cb3e52a (gitignore)
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OWMS_frontend", "OWMS_frontend\OWMS_frontend.csproj", "{732ED870-2646-4DA0-978B-230941CCDC95}"
-<<<<<<< HEAD
->>>>>>> cb3e52a (gitignore)
-=======
->>>>>>> cb3e52a (gitignore)
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +10,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< HEAD
-
-=======
->>>>>>> cb3e52a (gitignore)
 		{732ED870-2646-4DA0-978B-230941CCDC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{732ED870-2646-4DA0-978B-230941CCDC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{732ED870-2646-4DA0-978B-230941CCDC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -32,10 +19,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-<<<<<<< HEAD
-
-=======
->>>>>>> cb3e52a (gitignore)
-		SolutionGuid = {F586CB85-3E1F-451D-8C82-9D1A94692D98}
+		        SolutionGuid = {F586CB85-3E1F-451D-8C82-9D1A94692D98}
+		SolutionGuid = {7A75293E-3D3F-48ED-8AB0-7B6DD9D3AA48}
 	EndGlobalSection
 EndGlobal
