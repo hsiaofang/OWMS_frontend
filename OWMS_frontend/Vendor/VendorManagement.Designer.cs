@@ -11,14 +11,14 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing && (components != null))
+        //    {
+        //        components.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
         #region Windows Form Designer generated code
 
@@ -57,6 +57,7 @@
             txtSearchVendor.Size = new Size(125, 27);
             txtSearchVendor.TabIndex = 1;
             txtSearchVendor.Text = "搜尋廠商名稱：";
+            txtSearchVendor.TextChanged += txtSearchVendor_TextChanged;
             // 
             // btnSearchVendor
             // 
@@ -129,7 +130,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(btnAddNumber);
             Controls.Add(btnAddVendor);
             Controls.Add(dataGridView1);

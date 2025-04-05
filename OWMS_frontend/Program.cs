@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+using OWMS_frontend.Product;
 namespace OWMS_frontend
 {
     internal static class Program 

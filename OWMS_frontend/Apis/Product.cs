@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Diagnostics.Metrics;
 
 namespace OWMS_frontend.Apis
 {
@@ -12,6 +11,9 @@ namespace OWMS_frontend.Apis
         [JsonProperty("productName")]
         public string ProductName { get; set; } = string.Empty;
 
+        [JsonProperty("price")]
+        public decimal Price { get; set; }
+
         [JsonProperty("vendorId")]
         public int VendorId { get; set; }
 
@@ -20,9 +22,6 @@ namespace OWMS_frontend.Apis
 
         [JsonProperty("photoUrl")]
         public string? PhotoUrl { get; set; }
-
-        [JsonProperty("counterId")]
-        public int CounterId { get; set; }
 
         [JsonProperty("counter")]
         public Counter Counter { get; set; } = new Counter();
@@ -35,6 +34,7 @@ namespace OWMS_frontend.Apis
 
         [JsonProperty("qrCode")]
         public string QRCode { get; set; } = string.Empty;
+
+       
     }
 }
-

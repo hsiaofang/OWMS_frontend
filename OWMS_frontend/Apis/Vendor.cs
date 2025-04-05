@@ -7,8 +7,8 @@ namespace OWMS_frontend.Apis
         [JsonProperty("vendorId")]
         public int VendorId { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonProperty("VendorName")]
+        public string VendorName { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

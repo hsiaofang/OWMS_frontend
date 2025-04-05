@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using OWMS_frontend.Apis;
-//using OWMS_frontend.Vendor;
 
 namespace OWMS_frontend
 {
@@ -48,21 +47,21 @@ namespace OWMS_frontend
 
         private async void btnSearchVendor_Click(object sender, EventArgs e)
         {
-            string searchTerm = textBox1.ToLower();
+            //string searchTerm = textBox1.ToLower();
 
-            if (string.IsNullOrEmpty(searchTerm))
-            {
-                await LoadVendors();
-            }
-            else
-            {
-                var filteredVendors = vendors.Where(v => v.Name.ToLower().Contains(searchTerm) ||
-                                                          v.Contact.ToLower().Contains(searchTerm) ||
-                                                          v.Phone.Contains(searchTerm) ||
-                                                          v.Email.ToLower().Contains(searchTerm)).ToList();
+            //if (string.IsNullOrEmpty(searchTerm))
+            //{
+            //    await LoadVendors();
+            //}
+            //else
+            //{
+            //    var filteredVendors = vendors.Where(v => v.Name.ToLower().Contains(searchTerm) ||
+            //                                              v.Contact.ToLower().Contains(searchTerm) ||
+            //                                              v.Phone.Contains(searchTerm) ||
+            //                                              v.Email.ToLower().Contains(searchTerm)).ToList();
 
-                dataGridView1.DataSource = filteredVendors;
-            }
+            //    dataGridView1.DataSource = filteredVendors;
+            //}
         }
 
         private void VendorManagement_Load_1(object sender, EventArgs e)
@@ -71,6 +70,11 @@ namespace OWMS_frontend
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtSearchVendor_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -34,14 +34,14 @@ namespace OWMS_frontend
         {
             tabControl1 = new TabControl();
             tabRegister = new TabPage();
-            tabLogin = new TabPage();
-            label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
+            label1 = new Label();
+            tabLogin = new TabPage();
             btnLogin = new Button();
+            txtPassword = new TextBox();
+            txtUsername = new TextBox();
+            label4 = new Label();
+            label3 = new Label();
             tabControl1.SuspendLayout();
             tabRegister.SuspendLayout();
             tabLogin.SuspendLayout();
@@ -68,6 +68,25 @@ namespace OWMS_frontend
             tabRegister.TabIndex = 0;
             tabRegister.Text = "註冊";
             tabRegister.UseVisualStyleBackColor = true;
+            tabRegister.Click += tabRegister_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(35, 110);
+            label2.Name = "label2";
+            label2.Size = new Size(39, 19);
+            label2.TabIndex = 1;
+            label2.Text = "密碼";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(35, 42);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 19);
+            label1.TabIndex = 0;
+            label1.Text = "帳號";
             // 
             // tabLogin
             // 
@@ -83,33 +102,33 @@ namespace OWMS_frontend
             tabLogin.TabIndex = 1;
             tabLogin.Text = "登入";
             tabLogin.UseVisualStyleBackColor = true;
+            tabLogin.Click += tabLogin_Click;
             // 
-            // label1
+            // btnLogin
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(35, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(39, 19);
-            label1.TabIndex = 0;
-            label1.Text = "帳號";
+            btnLogin.Location = new Point(176, 171);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(94, 29);
+            btnLogin.TabIndex = 1;
+            btnLogin.Text = "登入";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
-            // label2
+            // txtPassword
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(35, 110);
-            label2.Name = "label2";
-            label2.Size = new Size(39, 19);
-            label2.TabIndex = 1;
-            label2.Text = "密碼";
+            txtPassword.Location = new Point(124, 125);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(146, 27);
+            txtPassword.TabIndex = 4;
+            txtPassword.TextChanged += txtUsername_TextChanged;
             // 
-            // label3
+            // txtUsername
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(57, 57);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 19);
-            label3.TabIndex = 1;
-            label3.Text = "帳號";
+            txtUsername.Location = new Point(124, 49);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(146, 27);
+            txtUsername.TabIndex = 3;
+            txtUsername.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -120,31 +139,14 @@ namespace OWMS_frontend
             label4.TabIndex = 2;
             label4.Text = "密碼";
             // 
-            // txtUsername
+            // label3
             // 
-            txtUsername.Location = new Point(124, 49);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(146, 27);
-            txtUsername.TabIndex = 3;
-            txtUsername.TextChanged += this.textBox1_TextChanged;
-            // 
-            // txtPassword
-            // 
-            txtPassword.Location = new Point(124, 125);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(146, 27);
-            txtPassword.TabIndex = 4;
-            txtPassword.TextChanged += this.txtUsername_TextChanged;
-            // 
-            // btnLogin
-            // 
-            btnLogin.Location = new Point(176, 171);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(94, 29);
-            btnLogin.TabIndex = 1;
-            btnLogin.Text = "登入";
-            btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += this.btnLogin_Click;
+            label3.AutoSize = true;
+            label3.Location = new Point(57, 57);
+            label3.Name = "label3";
+            label3.Size = new Size(39, 19);
+            label3.TabIndex = 1;
+            label3.Text = "帳號";
             // 
             // Login
             // 
@@ -162,60 +164,16 @@ namespace OWMS_frontend
             ResumeLayout(false);
         }
 
+        private void tabLogin_Click(object sender, EventArgs e)
+        {
+        }
+
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private async void btnLogin_Click(object sender, EventArgs e)
-        {
-            string username = txtUsername.Text; // 假設有一個 TextBox 用來輸入使用者名稱
-            string password = txtPassword.Text; // 假設有一個 TextBox 用來輸入密碼
-
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("使用者名稱和密碼不得為空！");
-                return;
-            }
-
-            var loginRequest = new
-            {
-                Username = username,
-                Password = password
-            };
-
-
-            string url = "https://localhost:5000/api/Auth/login";
-
-            // 創建 HttpClient 來發送請求
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                // 將 loginRequest 轉換為 JSON 並發送 POST 請求
-                var jsonContent = new StringContent(JsonConvert.SerializeObject(loginRequest), Encoding.UTF8, "application/json");
-
-                // 發送請求並接收回應
-                HttpResponseMessage response = await client.PostAsync(url, jsonContent);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    // 如果登入成功，取得返回的 JWT Token
-                    string token = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show("登入成功，獲取到 Token：" + token);
-                    // 這裡可以將 Token 存儲在某個地方（如本地存儲，或傳遞到其他頁面）
-                }
-                else
-                {
-                    // 如果登入失敗，顯示錯誤訊息
-                    string errorMessage = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show("登入失敗：" + errorMessage);
-                }
-            }
         }
 
         #endregion

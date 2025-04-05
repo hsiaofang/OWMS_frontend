@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OWMS_frontend
@@ -17,42 +10,38 @@ namespace OWMS_frontend
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void HomePage_Load(object sender, EventArgs e)
         {
-
-
+            ShowUserControl(new ProductPage());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ShowUserControl(UserControl userControl)
         {
-
+            this.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
+            this.Controls.Add(userControl);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void 產品管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ProductPage productPage = new ProductPage();
+            productPage.Show();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void 廠商管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
-
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void 庫存管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void 審核管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

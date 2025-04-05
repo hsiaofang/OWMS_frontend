@@ -41,19 +41,12 @@ namespace OWMS_frontend
             menuStrip2 = new MenuStrip();
             海外倉系統ToolStripMenuItem = new ToolStripMenuItem();
             menuStrip3 = new MenuStrip();
-            textBox2 = new TextBox();
-            dataGridView1 = new DataGridView();
-            OrderNumber = new DataGridViewTextBoxColumn();
-            Supplier = new DataGridViewTextBoxColumn();
-            Date = new DataGridViewTextBoxColumn();
-            Vendor = new DataGridViewTextBoxColumn();
-            OrderDate = new DataGridViewTextBoxColumn();
-            Actions = new DataGridViewButtonColumn();
-            button1 = new Button();
-            textBox1 = new TextBox();
+            btnNext = new Button();
+            btnPrev = new Button();
+            lblPageInfo = new Label();
+            panelContainer = new Panel();
             menuStrip4.SuspendLayout();
             menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip4
@@ -62,52 +55,58 @@ namespace OWMS_frontend
             menuStrip4.Items.AddRange(new ToolStripItem[] { 產品管理ToolStripMenuItem, 廠商管理ToolStripMenuItem, 庫存管理ToolStripMenuItem, 審核管理ToolStripMenuItem, 設定ToolStripMenuItem, 設定ToolStripMenuItem1 });
             menuStrip4.Location = new Point(0, 75);
             menuStrip4.Name = "menuStrip4";
-            menuStrip4.Size = new Size(1092, 27);
+            menuStrip4.Size = new Size(1902, 27);
             menuStrip4.TabIndex = 8;
             menuStrip4.Text = "產品管理";
             // 
             // 產品管理ToolStripMenuItem
             // 
             產品管理ToolStripMenuItem.Name = "產品管理ToolStripMenuItem";
-            產品管理ToolStripMenuItem.Size = new Size(83, 23);
+            產品管理ToolStripMenuItem.Size = new Size(83, 24);
             產品管理ToolStripMenuItem.Text = "產品管理";
+            產品管理ToolStripMenuItem.Click += 產品管理ToolStripMenuItem_Click;
             // 
             // 廠商管理ToolStripMenuItem
             // 
             廠商管理ToolStripMenuItem.Name = "廠商管理ToolStripMenuItem";
-            廠商管理ToolStripMenuItem.Size = new Size(83, 23);
+            廠商管理ToolStripMenuItem.Size = new Size(83, 24);
             廠商管理ToolStripMenuItem.Text = "廠商管理";
+            廠商管理ToolStripMenuItem.Click += 廠商管理ToolStripMenuItem_Click;
             // 
             // 庫存管理ToolStripMenuItem
             // 
             庫存管理ToolStripMenuItem.Name = "庫存管理ToolStripMenuItem";
-            庫存管理ToolStripMenuItem.Size = new Size(83, 23);
+            庫存管理ToolStripMenuItem.Size = new Size(83, 24);
             庫存管理ToolStripMenuItem.Text = "庫存管理";
+            庫存管理ToolStripMenuItem.Click += 庫存管理ToolStripMenuItem_Click;
             // 
             // 審核管理ToolStripMenuItem
             // 
             審核管理ToolStripMenuItem.Name = "審核管理ToolStripMenuItem";
-            審核管理ToolStripMenuItem.Size = new Size(83, 23);
+            審核管理ToolStripMenuItem.Size = new Size(83, 24);
             審核管理ToolStripMenuItem.Text = "審核管理";
+            審核管理ToolStripMenuItem.Click += 審核管理ToolStripMenuItem_Click;
             // 
             // 設定ToolStripMenuItem
             // 
             設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            設定ToolStripMenuItem.Size = new Size(83, 23);
+            設定ToolStripMenuItem.Size = new Size(83, 24);
             設定ToolStripMenuItem.Text = "人員管理";
+            設定ToolStripMenuItem.Click += 設定ToolStripMenuItem_Click;
             // 
             // 設定ToolStripMenuItem1
             // 
             設定ToolStripMenuItem1.Name = "設定ToolStripMenuItem1";
-            設定ToolStripMenuItem1.Size = new Size(53, 23);
+            設定ToolStripMenuItem1.Size = new Size(53, 24);
             設定ToolStripMenuItem1.Text = "設定";
+            設定ToolStripMenuItem1.Click += 設定ToolStripMenuItem1_Click;
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Location = new Point(0, 51);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1092, 24);
+            menuStrip1.Size = new Size(1902, 24);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = " 產品管理";
             // 
@@ -118,7 +117,7 @@ namespace OWMS_frontend
             menuStrip2.Items.AddRange(new ToolStripItem[] { 海外倉系統ToolStripMenuItem });
             menuStrip2.Location = new Point(0, 24);
             menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(1092, 27);
+            menuStrip2.Size = new Size(1902, 27);
             menuStrip2.TabIndex = 6;
             menuStrip2.Text = "menuStrip2";
             // 
@@ -133,101 +132,55 @@ namespace OWMS_frontend
             menuStrip3.ImageScalingSize = new Size(20, 20);
             menuStrip3.Location = new Point(0, 0);
             menuStrip3.Name = "menuStrip3";
-            menuStrip3.Size = new Size(1092, 24);
+            menuStrip3.Size = new Size(1902, 24);
             menuStrip3.TabIndex = 7;
             menuStrip3.Text = "產品管理";
             // 
-            // textBox2
+            // btnNext
             // 
-            textBox2.Location = new Point(37, 126);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(91, 27);
-            textBox2.TabIndex = 13;
-            textBox2.Text = "訂單編號";
+            btnNext.Location = new Point(693, 634);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(94, 29);
+            btnNext.TabIndex = 20;
+            btnNext.Text = "下一頁";
+            btnNext.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // btnPrev
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { OrderNumber, Supplier, Date, Vendor, OrderDate, Actions });
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.Location = new Point(12, 175);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.ShowCellToolTips = false;
-            dataGridView1.Size = new Size(884, 169);
-            dataGridView1.TabIndex = 12;
+            btnPrev.Location = new Point(428, 634);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new Size(94, 29);
+            btnPrev.TabIndex = 19;
+            btnPrev.Text = "上一頁";
+            btnPrev.UseVisualStyleBackColor = true;
             // 
-            // OrderNumber
+            // lblPageInfo
             // 
-            OrderNumber.HeaderText = "訂單編號";
-            OrderNumber.MinimumWidth = 6;
-            OrderNumber.Name = "OrderNumber";
-            OrderNumber.Width = 125;
+            lblPageInfo.AutoSize = true;
+            lblPageInfo.Location = new Point(545, 639);
+            lblPageInfo.Name = "lblPageInfo";
+            lblPageInfo.Size = new Size(120, 19);
+            lblPageInfo.TabIndex = 18;
+            lblPageInfo.Text = "第 1 頁 / 共 N 頁";
             // 
-            // Supplier
+            // panelContainer
             // 
-            Supplier.HeaderText = "區間單號";
-            Supplier.MinimumWidth = 6;
-            Supplier.Name = "Supplier";
-            Supplier.Width = 125;
-            // 
-            // Date
-            // 
-            Date.HeaderText = "入倉日期";
-            Date.MinimumWidth = 6;
-            Date.Name = "Date";
-            Date.Width = 125;
-            // 
-            // Vendor
-            // 
-            Vendor.HeaderText = "廠商";
-            Vendor.MinimumWidth = 6;
-            Vendor.Name = "Vendor";
-            Vendor.Width = 125;
-            // 
-            // OrderDate
-            // 
-            OrderDate.HeaderText = "訂單日期";
-            OrderDate.MinimumWidth = 6;
-            OrderDate.Name = "OrderDate";
-            OrderDate.Width = 125;
-            // 
-            // Actions
-            // 
-            Actions.HeaderText = "操作";
-            Actions.MinimumWidth = 6;
-            Actions.Name = "Actions";
-            Actions.Text = "";
-            Actions.UseColumnTextForButtonValue = true;
-            Actions.Width = 125;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(282, 121);
-            button1.Name = "button1";
-            button1.Size = new Size(53, 32);
-            button1.TabIndex = 11;
-            button1.Text = "搜尋";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += this.button1_Click_3;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(163, 125);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(91, 27);
-            textBox1.TabIndex = 10;
-            textBox1.Text = "區間單號";
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.Location = new Point(0, 102);
+            panelContainer.Name = "panelContainer";
+            panelContainer.Size = new Size(1902, 931);
+            panelContainer.TabIndex = 21;
+            panelContainer.Paint += panel1_Paint;
             // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1092, 579);
-            Controls.Add(textBox2);
-            Controls.Add(dataGridView1);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(panelContainer);
+            Controls.Add(btnNext);
+            Controls.Add(btnPrev);
+            Controls.Add(lblPageInfo);
             Controls.Add(menuStrip4);
             Controls.Add(menuStrip1);
             Controls.Add(menuStrip2);
@@ -239,14 +192,28 @@ namespace OWMS_frontend
             menuStrip4.PerformLayout();
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void 設定ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
         private void button1_Click_3(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion
@@ -263,15 +230,9 @@ namespace OWMS_frontend
         private MenuStrip menuStrip2;
         private ToolStripMenuItem 海外倉系統ToolStripMenuItem;
         private MenuStrip menuStrip3;
-        private TextBox textBox2;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn OrderNumber;
-        private DataGridViewTextBoxColumn Supplier;
-        private DataGridViewTextBoxColumn Date;
-        private DataGridViewTextBoxColumn Vendor;
-        private DataGridViewTextBoxColumn OrderDate;
-        private DataGridViewButtonColumn Actions;
-        private Button button1;
-        private TextBox textBox1;
+        private Button btnNext;
+        private Button btnPrev;
+        private Label lblPageInfo;
+        private Panel panelContainer;
     }
 }
