@@ -55,9 +55,10 @@ namespace OWMS_frontend
             menuStrip4.Items.AddRange(new ToolStripItem[] { 產品管理ToolStripMenuItem, 廠商管理ToolStripMenuItem, 庫存管理ToolStripMenuItem, 審核管理ToolStripMenuItem, 設定ToolStripMenuItem, 設定ToolStripMenuItem1 });
             menuStrip4.Location = new Point(0, 75);
             menuStrip4.Name = "menuStrip4";
-            menuStrip4.Size = new Size(1902, 27);
+            menuStrip4.Size = new Size(1902, 28);
             menuStrip4.TabIndex = 8;
             menuStrip4.Text = "產品管理";
+            menuStrip4.ItemClicked += menuStrip4_ItemClicked;
             // 
             // 產品管理ToolStripMenuItem
             // 
@@ -166,9 +167,9 @@ namespace OWMS_frontend
             // panelContainer
             // 
             panelContainer.Dock = DockStyle.Fill;
-            panelContainer.Location = new Point(0, 102);
+            panelContainer.Location = new Point(0, 103);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(1902, 931);
+            panelContainer.Size = new Size(1902, 930);
             panelContainer.TabIndex = 21;
             panelContainer.Paint += panel1_Paint;
             // 

@@ -3,7 +3,7 @@ using System;
 
 namespace OWMS_frontend.Apis
 {
-    public class Product
+    public class ProductItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -12,16 +12,19 @@ namespace OWMS_frontend.Apis
         public string ProductName { get; set; } = string.Empty;
 
         [JsonProperty("price")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [JsonProperty("vendorId")]
-        public int VendorId { get; set; }
+        public int VendorId { get; set; } 
 
         [JsonProperty("vendor")]
-        public Vendor Vendor { get; set; } = new Vendor();
+        public Vendor Vendor { get; set; } = new Vendor(); 
 
         [JsonProperty("photoUrl")]
         public string? PhotoUrl { get; set; }
+
+        [JsonProperty("counterId")]
+        public int CounterId { get; set; }
 
         [JsonProperty("counter")]
         public Counter Counter { get; set; } = new Counter();
@@ -34,7 +37,5 @@ namespace OWMS_frontend.Apis
 
         [JsonProperty("qrCode")]
         public string QRCode { get; set; } = string.Empty;
-
-       
     }
 }

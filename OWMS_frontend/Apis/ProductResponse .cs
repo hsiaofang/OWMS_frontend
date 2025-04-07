@@ -18,6 +18,6 @@ namespace OWMS_frontend.Apis
         public int PageSize { get; set; }
 
         [JsonProperty("products")]
-        public List<Product> Products { get; set; }
+        public List<ProductItem> Products { get; set; }
     }
 }

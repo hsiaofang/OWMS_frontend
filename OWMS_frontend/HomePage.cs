@@ -24,8 +24,10 @@ namespace OWMS_frontend
 
         private void 產品管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProductPage productPage = new ProductPage();
-            productPage.Show();
+            //ProductPage productPage = new ProductPage();
+            //productPage.Show();
+
+            ShowUserControl(new ProductPage());
         }
 
         private void 廠商管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,6 +44,11 @@ namespace OWMS_frontend
 
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void menuStrip4_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

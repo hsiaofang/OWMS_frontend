@@ -47,7 +47,7 @@ namespace OWMS_frontend
             vendors = new DataGridViewTextBoxColumn();
             counters = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
-            Action = new DataGridViewTextBoxColumn();
+            Action = new DataGridViewButtonColumn();
             btnSearch = new Button();
             searchProductBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)productGridView).BeginInit();
@@ -61,7 +61,6 @@ namespace OWMS_frontend
             btnNext.TabIndex = 28;
             btnNext.Text = "下一頁";
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += btnNext_Click;
             // 
             // btnPrev
             // 
@@ -71,7 +70,6 @@ namespace OWMS_frontend
             btnPrev.TabIndex = 27;
             btnPrev.Text = "上一頁";
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += btnPrev_Click;
             // 
             // lblPageInfo
             // 
@@ -108,7 +106,6 @@ namespace OWMS_frontend
             counterDropdown.Size = new Size(149, 27);
             counterDropdown.TabIndex = 23;
             counterDropdown.Text = "全部";
-            counterDropdown.SelectedIndexChanged += counterDropdown_SelectedIndexChanged;
             // 
             // vendorDropdown
             // 
@@ -118,7 +115,6 @@ namespace OWMS_frontend
             vendorDropdown.Size = new Size(140, 27);
             vendorDropdown.TabIndex = 22;
             vendorDropdown.Text = "全部";
-            vendorDropdown.SelectedIndexChanged += vendorDropdown_SelectedIndexChanged;
             // 
             // btnAddProduct
             // 
@@ -139,7 +135,7 @@ namespace OWMS_frontend
             productGridView.RowHeadersWidth = 51;
             productGridView.Size = new Size(1268, 415);
             productGridView.TabIndex = 20;
-            productGridView.CellContentClick += productGridView_CellContentClick;
+            productGridView.CellContentClick += btnEditProduct_Click;
             // 
             // ProductName
             // 
@@ -195,6 +191,8 @@ namespace OWMS_frontend
             Action.HeaderText = "操作";
             Action.MinimumWidth = 6;
             Action.Name = "Action";
+            Action.Text = "編輯";
+            Action.UseColumnTextForButtonValue = true;
             Action.Width = 125;
             // 
             // btnSearch
@@ -205,7 +203,6 @@ namespace OWMS_frontend
             btnSearch.TabIndex = 19;
             btnSearch.Text = "🔍 搜尋";
             btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
             // 
             // searchProductBox
             // 
@@ -214,7 +211,6 @@ namespace OWMS_frontend
             searchProductBox.Size = new Size(125, 27);
             searchProductBox.TabIndex = 18;
             searchProductBox.Text = "搜尋產品名稱";
-            searchProductBox.TextChanged += searchProductBox_TextChanged;
             // 
             // ProductPage
             // 
@@ -233,7 +229,6 @@ namespace OWMS_frontend
             Controls.Add(searchProductBox);
             Name = "ProductPage";
             Size = new Size(1902, 1033);
-            Load += ProductPage_Load;
             ((System.ComponentModel.ISupportInitialize)productGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -248,6 +243,8 @@ namespace OWMS_frontend
         private ComboBox vendorDropdown;
         private Button btnAddProduct;
         private DataGridView productGridView;
+        private Button btnSearch;
+        private TextBox searchProductBox;
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Image;
@@ -255,8 +252,6 @@ namespace OWMS_frontend
         private DataGridViewTextBoxColumn vendors;
         private DataGridViewTextBoxColumn counters;
         private DataGridViewTextBoxColumn Status;
-        private DataGridViewTextBoxColumn Action;
-        private Button btnSearch;
-        private TextBox searchProductBox;
+        private DataGridViewButtonColumn Action;
     }
 }

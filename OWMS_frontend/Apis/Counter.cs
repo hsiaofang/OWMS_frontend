@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-public class Counter
+namespace OWMS_frontend.Apis
 {
-    [JsonProperty("id")]
-    public int Id { get; set; }
+    public class Counter
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
 
-    [JsonProperty("counterName")]
-    public string CounterName { get; set; } = string.Empty;
+        [JsonProperty("counterName")]
+        public string CounterName { get; set; } = string.Empty;
+    }
 }

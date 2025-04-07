@@ -31,69 +31,46 @@ namespace OWMS_frontend
         {
             try
             {
-                string vendors = await _httpClient.GetStringAsync($"{apiUrl}/vendor");
-
-                var vendorData = JsonConvert.DeserializeObject<VendorResponse>(vendors);
-                MessageBox.Show("廠商資料：" + JsonConvert.SerializeObject(vendorData));
-                vendorDropdown.Items.Clear();
-                foreach (var vendor in vendorData.Vendors)
-                {
-                    vendorDropdown.Items.Add(vendor.Name);
-                }
-
-                string counters = await _httpClient.GetStringAsync($"{apiUrl}/counter");
-                MessageBox.Show("櫃號 JSON：" + counters);
-                var counterData = JsonConvert.DeserializeObject<CounterResponse>(counters);
-                if (counterData?.Counters != null && counterData.Counters.Any())
-                {
-                    MessageBox.Show("櫃號資料：" + JsonConvert.SerializeObject(counterData));
-                    counterDropdown.Items.Clear();
-                    foreach (var counter in counterData.Counters)
-                    {
-                        counterDropdown.Items.Add(counter.Name);
-                    }
-                }
-
-                await LoadProduct();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"資料載入失敗: {ex.Message}");
-            }
-        }
-
-        private async Task LoadProduct()
-        {
-            try
-            {
-                string selectedVendor = vendorDropdown.SelectedItem?.ToString() ?? "所有廠商";
-                string selectedCounter = counterDropdown.SelectedItem?.ToString() ?? "所有櫃號";
-
-                string url = $"{apiUrl}/products?pageNumber={currentPage}&pageSize={pageSize}" +
-                             $"&vendor={Uri.EscapeDataString(selectedVendor)}&counter={Uri.EscapeDataString(selectedCounter)}";
-
+                string url = $"{apiUrl}/products?pageNumber={currentPage}&pageSize={pageSize}";
                 var response = await _httpClient.GetAsync(url);
                 string productResponse = await response.Content.ReadAsStringAsync();
+                MessageBox.Show($"抓到資料 ({productResponse}");
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show($"載入產品失敗 ({(int)response.StatusCode}):\n{productResponse}");
+                    MessageBox.Show($"載入產品失敗 ({(int)response.StatusCode}):{productResponse}");
                     return;
                 }
 
                 var responseData = JsonConvert.DeserializeObject<ProductResponse>(productResponse);
+                MessageBox.Show($"反序列化 ({responseData}");
 
                 totalPages = (int)Math.Ceiling((double)responseData.TotalProducts / pageSize);
-
-                // 更新頁面資料
                 UpdatePagination();
+
                 UpdateProductGrid(responseData.Products);
+
+                vendorDropdown.Items.Clear();
+                foreach (var vendor in responseData.Vendors)
+                {
+                    vendorDropdown.Items.Add(vendor);
+                }
+                MessageBox.Show($"廠商數量: {responseData.Vendors.Count}");
+
+
+                counterDropdown.Items.Clear();
+                foreach (var counter in responseData.Counters)
+                {
+                    counterDropdown.Items.Add(counter);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"載入產品失敗: {ex.Message}");
+                MessageBox.Show($"初始化資料失敗: {ex.Message}");
             }
         }
+
+
 
         private void UpdatePagination()
         {
@@ -117,17 +94,54 @@ namespace OWMS_frontend
             }
         }
 
-        private void btnAddProduct_Click(object sender, EventArgs e)
+        private async void btnAddProduct_Click(object sender, EventArgs e)
         {
-            using (var addProductForm = new Create())
+            using (var addProductForm = new ProductDialog())
             {
-                addProductForm.ShowDialog();
-                if (addProductForm.IsConfirmed)
+                var result = addProductForm.ShowDialog();
+
+                if (result == DialogResult.OK && addProductForm.IsConfirmed)
                 {
-                    LoadProduct();
+                    await LoadPage();
                 }
             }
         }
+
+        private void btnEditProduct_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            if (productGridView.Columns[e.ColumnIndex].Name == "Edit" && e.RowIndex >= 0)
+            {
+                var row = productGridView.Rows[e.RowIndex];
+
+                string productName = row.Cells[0].Value?.ToString();
+                decimal productPrice = Convert.ToDecimal(row.Cells[1].Value);
+                string vendorName = row.Cells[2].Value?.ToString();
+                string counterName = row.Cells[3].Value?.ToString();
+                string productPhotoUrl = row.Cells[4].Value?.ToString();
+                string productQRCode = row.Cells[5].Value?.ToString();
+
+                var selectedProduct = new Product
+                {
+                    ProductName = productName,
+                    Price = productPrice,
+                    Vendor = new Vendor { Name = vendorName },
+                    Counter = new Counter { Name = counterName },
+                    PhotoUrl = productPhotoUrl,
+                    QRCode = productQRCode
+                };
+
+                using (var editProductForm = new ProductDialog(selectedProduct))
+                {
+                    var result = editProductForm.ShowDialog();
+
+                    if (result == DialogResult.OK && editProductForm.IsConfirmed)
+                    {
+                        LoadPage();
+                    }
+                }
+            }
+        }
+
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
@@ -156,7 +170,7 @@ namespace OWMS_frontend
             if (currentPage > 1)
             {
                 currentPage--;
-                LoadProduct();
+                LoadPage();
             }
         }
 
@@ -165,7 +179,7 @@ namespace OWMS_frontend
             if (currentPage < totalPages)
             {
                 currentPage++;
-                LoadProduct();
+                LoadPage();
             }
         }
 
@@ -195,7 +209,6 @@ namespace OWMS_frontend
             throw new NotImplementedException();
         }
 
-
         public class Product
         {
             public string ProductName { get; set; }
@@ -206,21 +219,6 @@ namespace OWMS_frontend
             public string QRCode { get; set; }
         }
 
-        public class ProductResponse
-        {
-            public int TotalProducts { get; set; }
-            public List<Product> Products { get; set; }
-        }
-
-        //public class VendorResponse
-        //{
-        //    public string Result { get; set; }
-        //    public List<Vendor> Vendors { get; set; }
-        //    public int TotalVendors { get; set; }
-        //    public int TotalPages { get; set; }
-        //    public int CurrentPage { get; set; }
-        //}
-
         public class Vendor
         {
             public int VendorId { get; set; }
@@ -229,35 +227,34 @@ namespace OWMS_frontend
             public string Account { get; set; }
             public string Password { get; set; }
             public string Notes { get; set; }
-            public List<BatchNumber> BatchNumbers { get; set; }
         }
-        public class CounterResponse
-        {
-            public string Result { get; set; }
-            public List<Counter> Counters { get; set; }
-            //public IEnumerable<object> Counter { get; internal set; }
-        }
+
+
         public class Counter
         {
             public int CounterId { get; set; }
             public string Name { get; set; }
-            // 其他屬性
         }
 
-        public class BatchNumber
+        public class ProductResponse
         {
-            public int Id { get; set; }
-            public string BatchCode { get; set; }
-            public DateTime StartDate { get; set; }
-            public DateTime EndDate { get; set; }
-            public int Quantity { get; set; }
-            public DateTime CreatedAt { get; set; }
-            public string Notes { get; set; }
+            public string Result { get; set; }
+            public string Message { get; set; }
+            public int TotalProducts { get; set; }
+            public int TotalPages { get; set; }
+            public int CurrentPage { get; set; }
+            public int PageSize { get; set; }
+            public List<Product> Products { get; set; }
+            public List<string> Vendors { get; set; }
+            public List<string> Counters { get; set; }
         }
+
+
 
         private void productGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
     }
 }
