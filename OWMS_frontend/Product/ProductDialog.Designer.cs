@@ -215,37 +215,22 @@ namespace OWMS_frontend.Product
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void counterDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void vendorDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void ProductDialog_Load(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void txtProductName_TextChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void txtVendor_TextChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion

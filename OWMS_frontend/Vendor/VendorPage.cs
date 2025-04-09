@@ -9,14 +9,14 @@ using OWMS_frontend.Apis;
 
 namespace OWMS_frontend
 {
-    public partial class VendorManagement : Form
+    public partial class VendorPage : UserControl
     {
         private int currentPage = 1;
         private int pageSize = 10;
         private object lblPageInfo;
         private object textBox1;
 
-        public VendorManagement()
+        public VendorPage()
         {
             InitializeComponent();
         }

@@ -7,6 +7,7 @@ using OWMS_frontend.Apis;
 using System.Net.Http.Headers;
 using System.Configuration;
 using Newtonsoft.Json;
+using static OWMS_frontend.ProductPage;
 
 namespace OWMS_frontend.Product
 {
@@ -25,6 +26,16 @@ namespace OWMS_frontend.Product
             _apiUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
         }
 
+         private void ProductDialog_Load(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void txtProductName_TextChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
         public ProductDialog(ProductItem productItem) : this()
         {
             ProductItem = productItem;
@@ -35,7 +46,7 @@ namespace OWMS_frontend.Product
                 txtPrice.Text = ProductItem.Price.ToString();
                 vendorDropdown.Text = ProductItem.Vendor?.VendorName;
                 counterDropdown.Text = ProductItem.Counter?.CounterName;
-                pictureBox.Image = Image.FromFile(ProductItem.PhotoUrl);
+                //pictureBox.Image = Image.FromFile(ProductItem.PhotoUrl);
             }
         }
 
@@ -49,38 +60,56 @@ namespace OWMS_frontend.Product
                     return;
                 }
 
+                if (ProductItem == null)
+                {
+                    ProductItem = new ProductItem();
+                }
+
                 ProductItem.ProductName = txtProductName.Text;
                 ProductItem.Price = int.Parse(txtPrice.Text);
-                ProductItem.Vendor = (Vendor)vendorDropdown.SelectedItem;
-                ProductItem.Counter = (Counter)counterDropdown.SelectedItem;
-                ProductItem.PhotoUrl = pictureBox.Image?.Location;
+                ProductItem.Vendor = (Apis.Vendor)vendorDropdown.SelectedItem;
+                ProductItem.Counter = (Apis.Counter)counterDropdown.SelectedItem;
 
-                if (pictureBox.Image != null)
+                var requestData = new MultipartFormDataContent();
+
+                var jsonContent = new StringContent(JsonConvert.SerializeObject(ProductItem), System.Text.Encoding.UTF8, "application/json");
+                requestData.Add(jsonContent, "productItem");
+
+                if (pictureBox.Image != null && !string.IsNullOrEmpty(pictureBox.ImageLocation))
                 {
-                    var fileContent = new MultipartFormDataContent();
-                    var fileStream = new FileStream(pictureBox.ImageLocation, FileMode.Open);
+                    var fileStream = new FileStream(pictureBox.ImageLocation, FileMode.Open, FileAccess.Read);
                     var fileName = Path.GetFileName(pictureBox.ImageLocation);
                     var fileContentPart = new StreamContent(fileStream);
-                    fileContentPart.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                    fileContentPart.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
 
-                    fileContent.Add(fileContentPart, "image", fileName);
+                    requestData.Add(fileContentPart, "image", fileName);
                 }
 
-                IsConfirmed = true;
+                var url = $"{_apiUrl}/products/create";
+                var response = await _httpClient.PostAsync(url, requestData);
 
-                var result = await CreateOrUpdateProductAsync(ProductItem);
-
-                if (result != null && result.PhotoUrl != null)
+                if (response.IsSuccessStatusCode)
                 {
-                    ProductItem.PhotoUrl = result.PhotoUrl;
-                }
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<ProductItem>(responseString);
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    if (result != null && result.PhotoUrl != null)
+                    {
+                        ProductItem.PhotoUrl = result.PhotoUrl;
+                    }
+
+                    IsConfirmed = true;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show($"API error: {response.ReasonPhrase}");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
 
@@ -102,36 +131,6 @@ namespace OWMS_frontend.Product
             {
                 string filePath = openFileDialog.FileName;
                 pictureBox.Image = Image.FromFile(filePath);
-            }
-        }
-
-        private async Task<ProductItem> CreateOrUpdateProductAsync(ProductItem productItem)
-        {
-            try
-            {
-                var url = $"{_apiUrl}/create";
-                var requestData = new MultipartFormDataContent();
-
-                var jsonContent = new StringContent(JsonConvert.SerializeObject(productItem), System.Text.Encoding.UTF8, "application/json");
-                requestData.Add(jsonContent, "productItem");
-
-                var response = await _httpClient.PostAsync(url, requestData);
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseString = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<ProductItem>(responseString);
-                    return result;
-                }
-                else
-                {
-                    MessageBox.Show($"API error: {response.ReasonPhrase}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
             }
         }
     }

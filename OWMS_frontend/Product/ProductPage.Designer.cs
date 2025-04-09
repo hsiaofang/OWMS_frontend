@@ -47,7 +47,7 @@ namespace OWMS_frontend
             vendors = new DataGridViewTextBoxColumn();
             counters = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
-            Action = new DataGridViewButtonColumn();
+            Edit = new DataGridViewButtonColumn();
             btnSearch = new Button();
             searchProductBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)productGridView).BeginInit();
@@ -55,7 +55,7 @@ namespace OWMS_frontend
             // 
             // btnNext
             // 
-            btnNext.Location = new Point(659, 598);
+            btnNext.Location = new Point(1019, 834);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(94, 29);
             btnNext.TabIndex = 28;
@@ -64,7 +64,7 @@ namespace OWMS_frontend
             // 
             // btnPrev
             // 
-            btnPrev.Location = new Point(394, 598);
+            btnPrev.Location = new Point(754, 834);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(94, 29);
             btnPrev.TabIndex = 27;
@@ -74,7 +74,7 @@ namespace OWMS_frontend
             // lblPageInfo
             // 
             lblPageInfo.AutoSize = true;
-            lblPageInfo.Location = new Point(511, 603);
+            lblPageInfo.Location = new Point(871, 839);
             lblPageInfo.Name = "lblPageInfo";
             lblPageInfo.Size = new Size(120, 19);
             lblPageInfo.TabIndex = 26;
@@ -129,11 +129,11 @@ namespace OWMS_frontend
             // productGridView
             // 
             productGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productGridView.Columns.AddRange(new DataGridViewColumn[] { ProductName, Price, Image, Code, vendors, counters, Status, Action });
+            productGridView.Columns.AddRange(new DataGridViewColumn[] { ProductName, Price, Image, Code, vendors, counters, Status, Edit });
             productGridView.Location = new Point(46, 157);
             productGridView.Name = "productGridView";
             productGridView.RowHeadersWidth = 51;
-            productGridView.Size = new Size(1268, 415);
+            productGridView.Size = new Size(1152, 648);
             productGridView.TabIndex = 20;
             productGridView.CellContentClick += btnEditProduct_Click;
             // 
@@ -186,14 +186,14 @@ namespace OWMS_frontend
             Status.Name = "Status";
             Status.Width = 125;
             // 
-            // Action
+            // Edit
             // 
-            Action.HeaderText = "操作";
-            Action.MinimumWidth = 6;
-            Action.Name = "Action";
-            Action.Text = "編輯";
-            Action.UseColumnTextForButtonValue = true;
-            Action.Width = 125;
+            Edit.HeaderText = "操作";
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.Text = "編輯";
+            Edit.UseColumnTextForButtonValue = true;
+            Edit.Width = 125;
             // 
             // btnSearch
             // 
@@ -228,7 +228,7 @@ namespace OWMS_frontend
             Controls.Add(btnSearch);
             Controls.Add(searchProductBox);
             Name = "ProductPage";
-            Size = new Size(1902, 1033);
+            Size = new Size(1920, 1080);
             ((System.ComponentModel.ISupportInitialize)productGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -253,5 +253,6 @@ namespace OWMS_frontend
         private DataGridViewTextBoxColumn counters;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewButtonColumn Action;
+        private DataGridViewButtonColumn Edit;
     }
 }

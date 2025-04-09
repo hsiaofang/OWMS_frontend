@@ -1,6 +1,6 @@
 ﻿namespace OWMS_frontend
 {
-    partial class VendorManagement
+    partial class VendorPage
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             btnAddVendor = new Button();
             btnAddNumber = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            SuspendLayout();
+            //SuspendLayout();
             // 
             // lblTitle
             // 
@@ -57,7 +57,7 @@
             txtSearchVendor.Size = new Size(125, 27);
             txtSearchVendor.TabIndex = 1;
             txtSearchVendor.Text = "搜尋廠商名稱：";
-            txtSearchVendor.TextChanged += txtSearchVendor_TextChanged;
+            //txtSearchVendor.TextChanged += txtSearchVendor_TextChanged;
             // 
             // btnSearchVendor
             // 
@@ -67,7 +67,7 @@
             btnSearchVendor.TabIndex = 2;
             btnSearchVendor.Text = "🔍 搜尋";
             btnSearchVendor.UseVisualStyleBackColor = true;
-            btnSearchVendor.Click += btnSearchVendor_Click;
+            //btnSearchVendor.Click += btnSearchVendor_Click;
             // 
             // dataGridView1
             // 
@@ -78,7 +78,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(633, 292);
             dataGridView1.TabIndex = 3;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            //dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // VendorName
             // 
@@ -128,21 +128,21 @@
             // 
             // VendorManagement
             // 
-            AutoScaleDimensions = new SizeF(9F, 19F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1902, 1033);
-            Controls.Add(btnAddNumber);
-            Controls.Add(btnAddVendor);
-            Controls.Add(dataGridView1);
-            Controls.Add(btnSearchVendor);
-            Controls.Add(txtSearchVendor);
-            Controls.Add(lblTitle);
-            Name = "VendorManagement";
-            Text = "Form1";
-            Load += VendorManagement_Load_1;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            //AutoScaleDimensions = new SizeF(9F, 19F);
+            //AutoScaleMode = AutoScaleMode.Font;
+            //ClientSize = new Size(1902, 1033);
+            //Controls.Add(btnAddNumber);
+            //Controls.Add(btnAddVendor);
+            //Controls.Add(dataGridView1);
+            //Controls.Add(btnSearchVendor);
+            //Controls.Add(txtSearchVendor);
+            //Controls.Add(lblTitle);
+            //Name = "VendorManagement";
+            //Text = "Form1";
+            //Load += VendorManagement_Load_1;
+            //((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            //ResumeLayout(false);
+            //PerformLayout();
         }
 
         #endregion

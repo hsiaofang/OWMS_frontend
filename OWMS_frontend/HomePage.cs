@@ -9,7 +9,6 @@ namespace OWMS_frontend
         {
             InitializeComponent();
         }
-
         private void HomePage_Load(object sender, EventArgs e)
         {
             ShowUserControl(new ProductPage());
@@ -17,21 +16,21 @@ namespace OWMS_frontend
 
         private void ShowUserControl(UserControl userControl)
         {
-            this.Controls.Clear();
+            this.panelContainer.Controls.Clear();
+
             userControl.Dock = DockStyle.Fill;
-            this.Controls.Add(userControl);
+            this.panelContainer.Controls.Add(userControl);
         }
 
         private void 產品管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ProductPage productPage = new ProductPage();
-            //productPage.Show();
-
             ShowUserControl(new ProductPage());
         }
 
         private void 廠商管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ShowUserControl(new VendorPage());
+
         }
 
         private void 庫存管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,6 +46,11 @@ namespace OWMS_frontend
         }
 
         private void menuStrip4_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

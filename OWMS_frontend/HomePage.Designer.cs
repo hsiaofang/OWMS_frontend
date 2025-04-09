@@ -55,7 +55,7 @@ namespace OWMS_frontend
             menuStrip4.Items.AddRange(new ToolStripItem[] { 產品管理ToolStripMenuItem, 廠商管理ToolStripMenuItem, 庫存管理ToolStripMenuItem, 審核管理ToolStripMenuItem, 設定ToolStripMenuItem, 設定ToolStripMenuItem1 });
             menuStrip4.Location = new Point(0, 75);
             menuStrip4.Name = "menuStrip4";
-            menuStrip4.Size = new Size(1902, 28);
+            menuStrip4.Size = new Size(1902, 27);
             menuStrip4.TabIndex = 8;
             menuStrip4.Text = "產品管理";
             menuStrip4.ItemClicked += menuStrip4_ItemClicked;
@@ -63,42 +63,42 @@ namespace OWMS_frontend
             // 產品管理ToolStripMenuItem
             // 
             產品管理ToolStripMenuItem.Name = "產品管理ToolStripMenuItem";
-            產品管理ToolStripMenuItem.Size = new Size(83, 24);
+            產品管理ToolStripMenuItem.Size = new Size(83, 23);
             產品管理ToolStripMenuItem.Text = "產品管理";
             產品管理ToolStripMenuItem.Click += 產品管理ToolStripMenuItem_Click;
             // 
             // 廠商管理ToolStripMenuItem
             // 
             廠商管理ToolStripMenuItem.Name = "廠商管理ToolStripMenuItem";
-            廠商管理ToolStripMenuItem.Size = new Size(83, 24);
+            廠商管理ToolStripMenuItem.Size = new Size(83, 23);
             廠商管理ToolStripMenuItem.Text = "廠商管理";
             廠商管理ToolStripMenuItem.Click += 廠商管理ToolStripMenuItem_Click;
             // 
             // 庫存管理ToolStripMenuItem
             // 
             庫存管理ToolStripMenuItem.Name = "庫存管理ToolStripMenuItem";
-            庫存管理ToolStripMenuItem.Size = new Size(83, 24);
+            庫存管理ToolStripMenuItem.Size = new Size(83, 23);
             庫存管理ToolStripMenuItem.Text = "庫存管理";
             庫存管理ToolStripMenuItem.Click += 庫存管理ToolStripMenuItem_Click;
             // 
             // 審核管理ToolStripMenuItem
             // 
             審核管理ToolStripMenuItem.Name = "審核管理ToolStripMenuItem";
-            審核管理ToolStripMenuItem.Size = new Size(83, 24);
+            審核管理ToolStripMenuItem.Size = new Size(83, 23);
             審核管理ToolStripMenuItem.Text = "審核管理";
             審核管理ToolStripMenuItem.Click += 審核管理ToolStripMenuItem_Click;
             // 
             // 設定ToolStripMenuItem
             // 
             設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            設定ToolStripMenuItem.Size = new Size(83, 24);
+            設定ToolStripMenuItem.Size = new Size(83, 23);
             設定ToolStripMenuItem.Text = "人員管理";
             設定ToolStripMenuItem.Click += 設定ToolStripMenuItem_Click;
             // 
             // 設定ToolStripMenuItem1
             // 
             設定ToolStripMenuItem1.Name = "設定ToolStripMenuItem1";
-            設定ToolStripMenuItem1.Size = new Size(53, 24);
+            設定ToolStripMenuItem1.Size = new Size(53, 23);
             設定ToolStripMenuItem1.Text = "設定";
             設定ToolStripMenuItem1.Click += 設定ToolStripMenuItem1_Click;
             // 
@@ -110,6 +110,7 @@ namespace OWMS_frontend
             menuStrip1.Size = new Size(1902, 24);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = " 產品管理";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // menuStrip2
             // 
@@ -167,9 +168,9 @@ namespace OWMS_frontend
             // panelContainer
             // 
             panelContainer.Dock = DockStyle.Fill;
-            panelContainer.Location = new Point(0, 103);
+            panelContainer.Location = new Point(0, 102);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(1902, 930);
+            panelContainer.Size = new Size(1902, 931);
             panelContainer.TabIndex = 21;
             panelContainer.Paint += panel1_Paint;
             // 

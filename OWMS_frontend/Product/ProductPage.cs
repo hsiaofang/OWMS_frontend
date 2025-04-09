@@ -34,7 +34,6 @@ namespace OWMS_frontend
                 string url = $"{apiUrl}/products?pageNumber={currentPage}&pageSize={pageSize}";
                 var response = await _httpClient.GetAsync(url);
                 string productResponse = await response.Content.ReadAsStringAsync();
-                MessageBox.Show($"抓到資料 ({productResponse}");
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -43,7 +42,6 @@ namespace OWMS_frontend
                 }
 
                 var responseData = JsonConvert.DeserializeObject<ProductResponse>(productResponse);
-                MessageBox.Show($"反序列化 ({responseData}");
 
                 totalPages = (int)Math.Ceiling((double)responseData.TotalProducts / pageSize);
                 UpdatePagination();
@@ -55,8 +53,6 @@ namespace OWMS_frontend
                 {
                     vendorDropdown.Items.Add(vendor);
                 }
-                MessageBox.Show($"廠商數量: {responseData.Vendors.Count}");
-
 
                 counterDropdown.Items.Clear();
                 foreach (var counter in responseData.Counters)
@@ -120,15 +116,16 @@ namespace OWMS_frontend
                 string productPhotoUrl = row.Cells[4].Value?.ToString();
                 string productQRCode = row.Cells[5].Value?.ToString();
 
-                var selectedProduct = new Product
+                var selectedProduct = new ProductItem
                 {
                     ProductName = productName,
-                    Price = productPrice,
-                    Vendor = new Vendor { Name = vendorName },
-                    Counter = new Counter { Name = counterName },
+                    Price = (int)productPrice,
+                    Vendor = new OWMS_frontend.Apis.Vendor { VendorName = vendorName },
+                    Counter = new OWMS_frontend.Apis.Counter { CounterName = counterName },
                     PhotoUrl = productPhotoUrl,
                     QRCode = productQRCode
                 };
+
 
                 using (var editProductForm = new ProductDialog(selectedProduct))
                 {
@@ -251,10 +248,41 @@ namespace OWMS_frontend
 
 
 
-        private void productGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void productGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (productGridView.Columns[e.ColumnIndex].Name == "Edit" && e.RowIndex >= 0)
+            {
+                var row = productGridView.Rows[e.RowIndex];
 
+                string productName = row.Cells[0].Value?.ToString();
+                decimal productPrice = Convert.ToDecimal(row.Cells[1].Value);
+                string vendorName = row.Cells[2].Value?.ToString();
+                string counterName = row.Cells[3].Value?.ToString();
+                string productPhotoUrl = row.Cells[4].Value?.ToString();
+                string productQRCode = row.Cells[5].Value?.ToString();
+
+                var selectedProduct = new ProductItem
+                {
+                    ProductName = productName,
+                    Price = (int)productPrice,
+                    Vendor = new OWMS_frontend.Apis.Vendor { VendorName = vendorName },
+                    Counter = new OWMS_frontend.Apis.Counter { CounterName = counterName },
+                    PhotoUrl = productPhotoUrl,
+                    QRCode = productQRCode
+                };
+
+                using (var editProductForm = new ProductDialog(selectedProduct))
+                {
+                    var result = editProductForm.ShowDialog();
+
+                    if (result == DialogResult.OK && editProductForm.IsConfirmed)
+                    {
+                        await LoadPage();
+                    }
+                }
+            }
         }
+
 
     }
 }
